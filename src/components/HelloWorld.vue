@@ -1,24 +1,29 @@
 <template>
   <v-container>
+    <v-form>
+     <v-row>
+      <v-col>
+	<v-btn class="mr-4" @click="submit">submit</v-btn>
+      </v-col>
+     </v-row>
     <v-row class="text-center">
       <v-col class="mb-4">
-	<v-form>
 	<v-textarea
-        name="input"
+	v-model='input'
         filled
         label="Quadratic"
         auto-grow
-        value="let
-a=1
-in
-b=a"
-      ></v-textarea>
-      <v-col>
+        ></v-textarea>
       </v-col>
-	<v-btn class="mr-4" @click="submit">submit</v-btn>
-	</v-form>
+      <v-col class="mb-4">
+	<v-textarea
+	v-model='output'
+        filled
+        auto-grow
+      ></v-textarea>
       </v-col>
     </v-row>
+    </v-form>
   </v-container>
 </template>
 
@@ -29,18 +34,26 @@ b=a"
     name: 'HelloWorld',
 
     data: () => ({
+       input: 'let\na=1\nin\nb=a^2',
+       output: 'outputs'
     }),
     methods: {
+      update(s) {
+        this.output=s;
+      }, 
       submit () {
-        let data = { name: this.name, selectPessoa: this.selectPessoa }
-        axios.post('index.php', data)
-          .then(function (response) {
-            console.log(response);
-           })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
+        this.output='submitting';
+        let info = { input: this.input };
+	const postData = async() => {
+          try {
+            const resp = await axios.post('index.php', info);
+            this.update(resp.data);
+          } catch (err) {
+            this.update(err);
+          }
+      };
+      postData();
     }
   }
+}
 </script>
