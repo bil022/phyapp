@@ -46,7 +46,7 @@
         let info = { input: this.input };
 	const postData = async() => {
           try {
-            const resp = await axios.post('index.php', info);
+            const resp = await axios.post('cc.php', info);
             this.update(resp.data);
           } catch (err) {
             this.update(err);
