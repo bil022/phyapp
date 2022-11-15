@@ -13,6 +13,7 @@
         filled
         label="Quadratic"
         auto-grow
+        @keypress.enter="submit"
         ></v-textarea>
       </v-col>
       <v-col class="mb-4">
@@ -32,7 +33,6 @@
 
   export default {
     name: 'HelloWorld',
-
     data: () => ({
        input: '# Q1\nlet\na=1\nb=-2^2\nc=3\nin\nx=quad(a,b,c)',
        output: 'outputs'
@@ -51,9 +51,12 @@
           } catch (err) {
             this.update(err);
           }
-      };
-      postData();
+        };
+        postData();
+      }
+    },
+    mounted() {
+      this.submit();
     }
-  }
 }
 </script>
