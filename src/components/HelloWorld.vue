@@ -34,7 +34,7 @@
     name: 'HelloWorld',
 
     data: () => ({
-       input: 'let\na=1\nin\nb=a^2',
+       input: '# Q1\nlet\na=1\nb=-2^2\nc=3\nin\nx=quad(a,b,c)',
        output: 'outputs'
     }),
     methods: {
