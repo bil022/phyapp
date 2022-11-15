@@ -34,7 +34,7 @@
   export default {
     name: 'HelloWorld',
     data: () => ({
-       input: '# Q1\nlet\na=1\nb=-2^2\nc=3\nin\nx=quad(a,b,c)',
+       input: '# Q1\nlet\na=1\nb=-2^2\nc=3\nin\nx=quad(a,b,c)\n',
        output: 'outputs'
     }),
     methods: {
